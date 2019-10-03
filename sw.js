@@ -1,11 +1,11 @@
-self.addEventlistener('install' , evt => {
+self.addEventListener('install' , evt => {
 	console.log('Service worker foi instalado.');
 });
 
-self.addEventlistener('activate', evt =>{
+self.addEventListener('activate', evt =>{
 	console.log('Service worker foi ativado.');
 });
 
-self.addEventlistener('fetch' , evt => {
+self.addEventListener('fetch' , evt => {
 	 console.log('Service worker capturou um evento do tipo fetch.');
 });
