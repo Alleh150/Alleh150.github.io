@@ -7,7 +7,7 @@ db.enablePersistence()
         }
     });
 
-db.collection('Tecnico').onSnapshot(snapshot => {
+db.collection('Friendly Cat').onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
             renderRecipe(change.doc.data(), change.doc.id);
