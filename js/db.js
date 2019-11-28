@@ -17,7 +17,7 @@ db.collection('Friendly Cat').onSnapshot(snapshot => {
              desenhaCard(change.doc.data(), change.doc.id);
         }
         if (change.type === 'removed') {
-            // remover da pagina tambem
+                        removeCard(change.doc.id);
         }
     });
 });
@@ -28,8 +28,8 @@ form.addEventListener('submit', evt => {
     evt.preventDefault();
 
     const produto = {
-        nome: form.NomeProduto.value,
-        descricao: form.DescricaoProduto.value,
+        nome: form.produtoNome.value,
+        descricao: form.produtoDescricao.value,
         link: form.produtoLink.value,
         arquivo: form.produtoArquivo.value
     };
@@ -38,9 +38,19 @@ form.addEventListener('submit', evt => {
         .catch(err => console.log(err));
 
     //reseta o formulario
-    form.NomeProduto.value = '';
-    form.DescricaoProduto.value = '';
+    form.produtoNome.value = '';
+    form.produtoDescricao.value = '';
     form.produtoLink.value = '';
     form.produtoArquivo.value = '';
 
 });
+
+// remove a recipe
+const produtos1 = document.querySelector('.produtos');
+produtos1.addEventListener('click', evt => {
+  if(evt.target.tagName === 'I'){
+    const id = evt.target.getAttribute('data-id');
+    //console.log(id);
+    db.collection('produto').doc(id).delete();
+  }
+})
