@@ -61,7 +61,7 @@
 </ul>
 <div class="container-fluid">
         <!-- inicio container -->
-        <div class="row sobremesas">
+        <div class="row produtos">
             <!-- inicio row-->
         </div><!-- fim do row -->
     </div><!-- fim do container-->
@@ -71,19 +71,19 @@
       </a>
    </div>
 
-  <div id="side-from" class="sidenav side-from">
+  <div id="side-form" class="sidenav side-form">
        <!-- formulario para adicionar produtos-->
       <form class="adiciona-produto container section">
           <h6> Novo Produto</h6>
           <div class="divider"></div>
           <div class="input-field">
-              <input placeholder="ex. Brinquedo Joaninha para gato" id="NomeProduto" type="text" class="validate">
-              <label for="NomeProduto">Nome do Produto</label>
+              <input placeholder="ex. Brinquedo Joaninha para gato" id="produtoNome" type="text" class="validate">
+              <label for="produtoNome">Nome do Produto</label>
           </div>
 
           <div class="input-field">
-              <input placeholder="Ração Hills Prescription Diet c/d Multicare Felino Frango & Vegetais Lata 82g" id="DescricaoProduto" type="text" class="validate">
-             <label for="DescricaoProduto">Descrição do Produto</label>
+              <input placeholder="Ração Hills Prescription Diet c/d Multicare Felino Frango & Vegetais Lata 82g" id="produtoDescricao" type="text" class="validate">
+             <label for="produtoDescricao">Descrição do Produto</label>
           </div>
 
           <div class="input-field">
@@ -123,22 +123,27 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+   
     // Obter elementos para o upload
     var uploader = document.getElementById('uploader');
     var fileButton = document.getElementById('fileButton');
+    let filePath = '';
     // Evento que monitora os eventos do botao de upload
+   
     fileButton.addEventListener('change', function(e) {
         // obter arquivo
         var file = e.target.files[0];
-        file.name = document.getElementById("fileButton").value = this.value.substring(12);
-        console.log(file.name);
+  console.log("entrou em event listener");
+        file.name = document.getElementById("fileButton").value;
+        //file.name = document.getElementById("fileButton").value.replace("C:\\fakepath\\", "");
         // Create the file metadata
         var metadata = {
             contentType: 'image/jpeg'
         };
         var storageRef = firebase.storage().ref();
         var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+         
+uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
             function(snapshot) {
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
@@ -164,13 +169,14 @@
             function() {
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                     console.log('File available at', downloadURL);
+                    filePath = downloadURL;
                 });
             });
     });
     </script>
     <script type="text/javascript" src="./js/app.js"></script>
+     <script type="text/javascript" src="./js/ui.js"></script>
     <script type="text/javascript" src="./js/db.js"></script>
-    <script type="text/javascript" src="./js/ui.js"></script>
 </body>
 
 </html>
