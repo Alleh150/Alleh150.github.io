@@ -1,6 +1,6 @@
 // essa funcao seleciona o row (que esta no index)
 // para depois desenhar todos os cards la
-const produto = document.querySelector('.produto');
+const produto = document.querySelector('.produtos');
 
 document.addEventListener('DOMContentLoaded', function() {
     // menus laterais 
@@ -36,5 +36,11 @@ const desenhaCard = (data, id) => {
    </div>`;
     produto.innerHTML += html;
 
+};
+
+// remove recipe
+const removeCard = (id) => {
+  const produto = document.querySelector(`.produto[data-id=${id}]`);
+  produto.remove();
 };
 
