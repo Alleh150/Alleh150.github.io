@@ -1,6 +1,6 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
-    <head>
+<head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,12 +31,12 @@
     }
     </style>
 
-    </head>
-<body style=" background-color: red;">
-<nav class="pink darken-2">
+</head>
+<body style="background-color: #D32E5EFF;">
+  <nav style="background-color: #AE0E36FF;">
 
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Friendly Cat</a>
+      <a href="./index.html" class="brand-logo">Friendly Cat</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger">
          <i class="material-icons">menu</i>  
       </a>
@@ -44,12 +44,12 @@
             <li>
                <a href="pages/sobre.html">Sobre Nós</a>
             </li> 
-              <li>
+            <li>
                 <a href="pages/contato.html">Contato</a>
-              </li>  
+            </li>  
          </ul>
     </div>
-</nav>
+  </nav>
 
 <ul class="sidenav" id="mobile-demo">
     <li>
@@ -64,14 +64,14 @@
         <div class="row produtos">
             <!-- inicio row-->
         </div><!-- fim do row -->
-    </div><!-- fim do container-->
+</div><!-- fim do container-->
     <div class="center">
       <a class="bnt-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
         <i class="material-icons">add</i>
       </a>
-   </div>
+    </div>
 
-  <div id="side-form" class="sidenav side-form">
+    <div id="side-form" class="sidenav side-form">
        <!-- formulario para adicionar produtos-->
       <form class="adiciona-produto container section">
           <h6> Novo Produto</h6>
@@ -101,7 +101,7 @@
               <button class="btn-small">Adicionar</button>
           </div>
       </form>
-  </div>
+    </div>
 
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
@@ -133,7 +133,7 @@
     fileButton.addEventListener('change', function(e) {
         // obter arquivo
         var file = e.target.files[0];
-  console.log("entrou em event listener");
+        console.log("entrou em event listener");
         file.name = document.getElementById("fileButton").value;
         //file.name = document.getElementById("fileButton").value.replace("C:\\fakepath\\", "");
         // Create the file metadata
@@ -181,5 +181,3 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 
 </html>
 
-
-  
